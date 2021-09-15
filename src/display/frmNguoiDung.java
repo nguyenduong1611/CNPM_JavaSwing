@@ -149,7 +149,8 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
             String quoctich = txtQuocTich.getText();
             list.add(new ThongTinNguoiDung(nguoidung_id, hoten, namsinh, diachi, cccd, gioitinh, email, quoctich));
             //them vao database
-            String sql = "insert into ThongTinNguoiDung(nguoidung_id,hoten,namsinh,diachi,cccd,gioitinh,email,quoctich) values('" + nguoidung_id + "',N'" + hoten + "','" + namsinh + "','" + diachi + "','" + cccd + "',N'" + gioitinh + "','"+email+"','"+quoctich+"')";
+            String sql = "insert into ThongTinNguoiDung(nguoidung_id,hoten,namsinh,diachi,cccd,gioitinh,email,quoctich)\n"
+                    + " values('" + nguoidung_id + "',N'" + hoten + "','" + namsinh + "','" + diachi + "','" + cccd + "',N'" + gioitinh + "','"+email+"','"+quoctich+"')";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng thành công");

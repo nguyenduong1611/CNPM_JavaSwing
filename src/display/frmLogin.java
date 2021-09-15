@@ -147,6 +147,11 @@ public class frmLogin extends javax.swing.JFrame {
 
         btnDangKy.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnDangKy.setText("Đăng ký");
+        btnDangKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangKyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,6 +254,13 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
+        // TODO add your handling code here:
+        frmDangKy dangky = new frmDangKy();
+        dangky.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDangKyActionPerformed
 
     /**
      * @param args the command line arguments

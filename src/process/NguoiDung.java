@@ -25,6 +25,10 @@ public class NguoiDung {
         this.role = role;
     }
 
+    public NguoiDung(String sdt, String password, String role) {
+        
+    }
+
    
 
     public String getId() {
