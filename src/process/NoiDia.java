@@ -43,6 +43,10 @@ public class NoiDia {
         this.bieuhien = bieuhien;
     }
 
+    public NoiDia(String nguoidung_id, String phuongtien, String mahieuphuongtien, String noidi, String noiden, String ngaykhoihanh, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien) {
+        
+    }
+
     public String getId() {
         return id;
     }

@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import process.NhapCanh;
+import process.NoiDia;
 import process.ToanDan;
 
 /**
@@ -23,6 +25,8 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
 
     Connection conn;
     List<ToanDan> list = new ArrayList<>();
+    List<NoiDia> listNoiDia = new ArrayList<>();
+    List<NhapCanh> listNhapCanh = new ArrayList<>();
 
     /**
      * Creates new form frmKhaiBao
@@ -31,14 +35,16 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         initComponents();
         conn = Ket_Noi.ket_noi("KhaiBaoYTe");
         if (conn != null) {
-            loadDataToList();
+            loadDataToListToanDan();
+            loadDataToListNoiDia();
+            loadDataToListNhapCanh();
             System.out.println("Kết nối thành công");
         } else {
             System.out.println("Lỗi kết nối");
         }
     }
 
-    private void loadDataToList() {
+    private void loadDataToListToanDan() {
         try {
             String sql = "select * from KhaiBaoToanDan";
             Statement st = conn.createStatement();
@@ -62,35 +68,94 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         }
     }
     
-    public void them(){
+    private void loadDataToListNoiDia(){
+        try {
+            String sql = "select * from KhaiBaoNoiDia";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                String id = rs.getString("id");
+                String nguoidung_id = rs.getString("nguoidung_id");
+                String phuongtien = rs.getString("phuongtien");
+                String mahieuphuongtien = rs.getString("mahieuphuongtien");
+                String noidi = rs.getString("noidi");
+                String noiden = rs.getString("noiden");
+                String ngaykhoihanh = rs.getString("ngaykhoihanh");
+                String dichuyen = rs.getString("dichuyen");
+                String trieuchung = rs.getString("trieuchung");
+                String nghinhiem = rs.getString("nghinhiem");
+                String nuocbenh = rs.getString("nuocbenh");
+                String bieuhien = rs.getString("bieuhien");
+                listNoiDia.add(new NoiDia(id, nguoidung_id, phuongtien, mahieuphuongtien, noidi, noiden, ngaykhoihanh, dichuyen, trieuchung, nghinhiem, nuocbenh, bieuhien));
+            }
+            st.close();
+            rs.close();
+            return;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi load data khai bao noi dia to list ");
+        }
+    }
+    private void loadDataToListNhapCanh(){
+        try {
+            String sql = "select * from KhaiBaoNhapCanh";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                String id = rs.getString("id");
+                String nguoidung_id = rs.getString("nguoidung_id");
+                String cuakhau = rs.getString("cuakhau");
+                String thongtindilai = rs.getString("thongtindilai");
+                String ngaykhoihanh = rs.getString("ngaykhoihanh");
+                String ngaynhapcanh = rs.getString("ngaynhapcanh");
+                String diachikhoihanh = rs.getString("diachikhoihanh");
+                String diachiden = rs.getString("diachiden");
+                String noiosaucachly = rs.getString("noiosaucachly");
+                String sot = rs.getString("sot");
+                String ho = rs.getString("ho");
+                String khotho = rs.getString("khotho");
+                String dauhong = rs.getString("dauhong");
+                
+                listNhapCanh.add(new NhapCanh(id, nguoidung_id, cuakhau, thongtindilai, ngaykhoihanh, ngaynhapcanh, diachikhoihanh, diachiden, noiosaucachly, sot, ho, khotho, dauhong));
+            }
+            st.close();
+            rs.close();
+            return;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi load data khai bao nhap canh to list ");
+        }
+    }
+    
+    public void themToanDan(){
         try {
             String nguoidung_id = frmLogin.ID;
             String dichuyen;
-            if(rdoCoDiChuyen.isSelected()){
+            if(rdoCoDiChuyenToanDan.isSelected()){
                 dichuyen = "có";
             }else{
                 dichuyen = "không";
             }
             String trieuchung;
-            if(rdoCoTrieuChung.isSelected()){
+            if(rdoCoTrieuChungToanDan.isSelected()){
                 trieuchung = "có";
             }else{
                 trieuchung = "không";
             }
             String nghinhiem;
-            if(rdoCoNghiNhiem.isSelected()){
+            if(rdoCoNghiNhiemToanDan.isSelected()){
                 nghinhiem = "có";
             }else{
                 nghinhiem = "không";
             }
             String nuocbenh;
-            if(rdoCoNuocBenh.isSelected()){
+            if(rdoCoNuocBenhToanDan.isSelected()){
                 nuocbenh = "có";
             }else{
                 nuocbenh = "không";
             }
             String bieuhien;
-            if(rdoCoBieuHien.isSelected()){
+            if(rdoCoBieuHienToanDan.isSelected()){
                 bieuhien = "có";
             }else{
                 bieuhien = "không";
@@ -106,6 +171,58 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng không thành công");
         }
     }
+    
+    public void themNoiDia(){
+        try {
+            String nguoidung_id = frmLogin.ID;
+            String phuongtien = txtPhuongTienDiLai.getText();
+            String mahieuphuongtien = txtMaHieuPhuongTien.getText();
+            String noidi = txtNoiDi.getText();
+            String noiden = txtNoiDen.getText();
+            String ngaykhoihanh = txtNgayKhoiHanh.getText();
+            String dichuyen;
+            if(rdoCoDiChuyenNoiDia.isSelected()){
+                dichuyen = "có";
+            }else{
+                dichuyen = "không";
+            }
+            String trieuchung;
+            if(rdoCoTrieuChungNoiDia.isSelected()){
+                trieuchung = "có";
+            }else{
+                trieuchung = "không";
+            }
+            String nghinhiem;
+            if(rdoCoNghiNhiemNoiDia.isSelected()){
+                nghinhiem = "có";
+            }else{
+                nghinhiem = "không";
+            }
+            String nuocbenh;
+            if(rdoCoNuocBenhNoiDia.isSelected()){
+                nuocbenh = "có";
+            }else{
+                nuocbenh = "không";
+            }
+            String bieuhien;
+            if(rdoCoBieuHienNoiDia.isSelected()){
+                bieuhien = "có";
+            }else{
+                bieuhien = "không";
+            }
+            listNoiDia.add(new NoiDia(nguoidung_id, phuongtien, mahieuphuongtien, noidi, noiden, ngaykhoihanh, dichuyen, trieuchung, nghinhiem, nuocbenh, bieuhien));
+            System.out.println("them vao list thanh cong");
+            // them vao database
+            String sql = "insert into KhaiBaoNoiDia(nguoidung_id,phuongtien,mahieuphuongtien,noidi,noiden,ngaykhoihanh,dichuyen,trieuchung,nghinhiem,nuocbenh,bieuhien)\n"
+                    + " values('"+nguoidung_id+"',N'"+phuongtien+"','"+mahieuphuongtien+"',N'"+noidi+"',N'"+noiden+"','"+ngaykhoihanh+"',N'"+dichuyen+"',N'"+trieuchung+"',N'"+nghinhiem+"',N'"+nuocbenh+"',N'"+bieuhien+"')";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng thành công");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng không thành công");
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,19 +246,19 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        rdoCoNghiNhiem = new javax.swing.JRadioButton();
-        rdoKhongNghiNhiem = new javax.swing.JRadioButton();
-        rdoCoNuocBenh = new javax.swing.JRadioButton();
-        rdoKhongNuocBenh = new javax.swing.JRadioButton();
-        rdoCoBieuHien = new javax.swing.JRadioButton();
-        rdoKhongBieuHien = new javax.swing.JRadioButton();
+        rdoCoNghiNhiemToanDan = new javax.swing.JRadioButton();
+        rdoKhongNghiNhiemToanDan = new javax.swing.JRadioButton();
+        rdoCoNuocBenhToanDan = new javax.swing.JRadioButton();
+        rdoKhongNuocBenhToanDan = new javax.swing.JRadioButton();
+        rdoCoBieuHienToanDan = new javax.swing.JRadioButton();
+        rdoKhongBieuHienToanDan = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        rdoCoDiChuyen = new javax.swing.JRadioButton();
-        rdoKhongDiChuyen = new javax.swing.JRadioButton();
-        rdoCoTrieuChung = new javax.swing.JRadioButton();
-        rdoKhongTrieuChung = new javax.swing.JRadioButton();
-        btnGui = new javax.swing.JButton();
+        rdoCoDiChuyenToanDan = new javax.swing.JRadioButton();
+        rdoKhongDiChuyenToanDan = new javax.swing.JRadioButton();
+        rdoCoTrieuChungToanDan = new javax.swing.JRadioButton();
+        rdoKhongTrieuChungToanDan = new javax.swing.JRadioButton();
+        btnGuiToanDan = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jpnNoiDia = new javax.swing.JPanel();
@@ -155,24 +272,24 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         txtPhuongTienDiLai = new javax.swing.JTextField();
         txtNoiDen = new javax.swing.JTextField();
         txtNoiDi = new javax.swing.JTextField();
-        rdoCoDiChuyen1 = new javax.swing.JRadioButton();
-        rdoKhongDiChuyen1 = new javax.swing.JRadioButton();
+        rdoCoDiChuyenNoiDia = new javax.swing.JRadioButton();
+        rdoKhongDiChuyenNoiDia = new javax.swing.JRadioButton();
         btnGuiNoiDia = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        rdoCoTrieuChung1 = new javax.swing.JRadioButton();
+        rdoCoTrieuChungNoiDia = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        rdoCoNghiNhiem1 = new javax.swing.JRadioButton();
-        rdoKhongNghiNhiem1 = new javax.swing.JRadioButton();
-        rdoCoNuocBenh1 = new javax.swing.JRadioButton();
-        rdoKhongNuocBenh1 = new javax.swing.JRadioButton();
-        rdoCoBieuHien1 = new javax.swing.JRadioButton();
-        rdoKhongBieuHien1 = new javax.swing.JRadioButton();
+        rdoCoNghiNhiemNoiDia = new javax.swing.JRadioButton();
+        rdoKhongNghiNhiemNoiDia = new javax.swing.JRadioButton();
+        rdoCoNuocBenhNoiDia = new javax.swing.JRadioButton();
+        rdoKhongNuocBenhNoiDia = new javax.swing.JRadioButton();
+        rdoCoBieuHienNoiDia = new javax.swing.JRadioButton();
+        rdoKhongBieuHienNoiDia = new javax.swing.JRadioButton();
         jLabel20 = new javax.swing.JLabel();
-        rdoKhongTrieuChung1 = new javax.swing.JRadioButton();
+        rdoKhongTrieuChungNoiDia = new javax.swing.JRadioButton();
         jpnNhapCanh = new javax.swing.JPanel();
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,34 +314,34 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Người có biểu hiện (Sốt, ho, khó thở , Viêm phổi) (*)");
 
-        rdoCoNghiNhiem.setBackground(new java.awt.Color(204, 204, 204));
-        rdoCoNghiNhiem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoNghiNhiem.setText("Có");
+        rdoCoNghiNhiemToanDan.setBackground(new java.awt.Color(204, 204, 204));
+        rdoCoNghiNhiemToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoNghiNhiemToanDan.setText("Có");
 
-        rdoKhongNghiNhiem.setBackground(new java.awt.Color(204, 204, 204));
-        rdoKhongNghiNhiem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongNghiNhiem.setText("Không");
-        rdoKhongNghiNhiem.addActionListener(new java.awt.event.ActionListener() {
+        rdoKhongNghiNhiemToanDan.setBackground(new java.awt.Color(204, 204, 204));
+        rdoKhongNghiNhiemToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongNghiNhiemToanDan.setText("Không");
+        rdoKhongNghiNhiemToanDan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoKhongNghiNhiemActionPerformed(evt);
+                rdoKhongNghiNhiemToanDanActionPerformed(evt);
             }
         });
 
-        rdoCoNuocBenh.setBackground(new java.awt.Color(204, 204, 204));
-        rdoCoNuocBenh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoNuocBenh.setText("Có");
+        rdoCoNuocBenhToanDan.setBackground(new java.awt.Color(204, 204, 204));
+        rdoCoNuocBenhToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoNuocBenhToanDan.setText("Có");
 
-        rdoKhongNuocBenh.setBackground(new java.awt.Color(204, 204, 204));
-        rdoKhongNuocBenh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongNuocBenh.setText("Không");
+        rdoKhongNuocBenhToanDan.setBackground(new java.awt.Color(204, 204, 204));
+        rdoKhongNuocBenhToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongNuocBenhToanDan.setText("Không");
 
-        rdoCoBieuHien.setBackground(new java.awt.Color(204, 204, 204));
-        rdoCoBieuHien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoBieuHien.setText("Có");
+        rdoCoBieuHienToanDan.setBackground(new java.awt.Color(204, 204, 204));
+        rdoCoBieuHienToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoBieuHienToanDan.setText("Có");
 
-        rdoKhongBieuHien.setBackground(new java.awt.Color(204, 204, 204));
-        rdoKhongBieuHien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongBieuHien.setText("Không");
+        rdoKhongBieuHienToanDan.setBackground(new java.awt.Color(204, 204, 204));
+        rdoKhongBieuHienToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongBieuHienToanDan.setText("Không");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -238,14 +355,14 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdoCoNghiNhiem, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoCoNuocBenh, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoCoBieuHien, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(rdoCoNghiNhiemToanDan, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoCoNuocBenhToanDan, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoCoBieuHienToanDan, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdoKhongNghiNhiem, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoKhongNuocBenh, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoKhongBieuHien, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(rdoKhongNghiNhiemToanDan, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoKhongNuocBenhToanDan, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoKhongBieuHienToanDan, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,18 +371,18 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(rdoCoNghiNhiem)
-                    .addComponent(rdoKhongNghiNhiem))
+                    .addComponent(rdoCoNghiNhiemToanDan)
+                    .addComponent(rdoKhongNghiNhiemToanDan))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(rdoCoNuocBenh)
-                    .addComponent(rdoKhongNuocBenh))
+                    .addComponent(rdoCoNuocBenhToanDan)
+                    .addComponent(rdoKhongNuocBenhToanDan))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(rdoCoBieuHien)
-                    .addComponent(rdoKhongBieuHien))
+                    .addComponent(rdoCoBieuHienToanDan)
+                    .addComponent(rdoKhongBieuHienToanDan))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -276,25 +393,25 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("THÔNG TIN KHAI BÁO Y TẾ");
 
-        btgDiChuyen.add(rdoCoDiChuyen);
-        rdoCoDiChuyen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoDiChuyen.setText("Có ");
+        btgDiChuyen.add(rdoCoDiChuyenToanDan);
+        rdoCoDiChuyenToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoDiChuyenToanDan.setText("Có ");
 
-        btgDiChuyen.add(rdoKhongDiChuyen);
-        rdoKhongDiChuyen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongDiChuyen.setText("Không");
+        btgDiChuyen.add(rdoKhongDiChuyenToanDan);
+        rdoKhongDiChuyenToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongDiChuyenToanDan.setText("Không");
 
-        rdoCoTrieuChung.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoTrieuChung.setText("Có");
+        rdoCoTrieuChungToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoTrieuChungToanDan.setText("Có");
 
-        rdoKhongTrieuChung.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongTrieuChung.setText("Không");
+        rdoKhongTrieuChungToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongTrieuChungToanDan.setText("Không");
 
-        btnGui.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnGui.setText("Gửi");
-        btnGui.addActionListener(new java.awt.event.ActionListener() {
+        btnGuiToanDan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnGuiToanDan.setText("Gửi");
+        btnGuiToanDan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuiActionPerformed(evt);
+                btnGuiToanDanActionPerformed(evt);
             }
         });
 
@@ -314,31 +431,32 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpnToanDanLayout.createSequentialGroup()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 1033, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 227, Short.MAX_VALUE))
+            .addGroup(jpnToanDanLayout.createSequentialGroup()
                 .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpnToanDanLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdoCoDiChuyen)
-                            .addComponent(rdoCoTrieuChung))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdoKhongDiChuyen, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rdoKhongTrieuChung, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jpnToanDanLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(156, 156, 156)
-                        .addComponent(btnGui, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnGuiToanDan, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnToanDanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6))
                     .addGroup(jpnToanDanLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpnToanDanLayout.createSequentialGroup()
+                                .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rdoCoDiChuyenToanDan)
+                                    .addComponent(rdoCoTrieuChungToanDan))
+                                .addGap(18, 18, 18)
+                                .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rdoKhongDiChuyenToanDan, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(rdoKhongTrieuChungToanDan, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6))))
+                            .addComponent(jLabel2))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jpnToanDanLayout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 1033, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpnToanDanLayout.setVerticalGroup(
             jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,19 +467,19 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoCoDiChuyen)
-                    .addComponent(rdoKhongDiChuyen))
+                    .addComponent(rdoCoDiChuyenToanDan)
+                    .addComponent(rdoKhongDiChuyenToanDan))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoCoTrieuChung)
-                    .addComponent(rdoKhongTrieuChung))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                    .addComponent(rdoCoTrieuChungToanDan)
+                    .addComponent(rdoKhongTrieuChungToanDan))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +487,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnToanDanLayout.createSequentialGroup()
-                        .addComponent(btnGui, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuiToanDan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88))))
         );
 
@@ -390,13 +508,13 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setText("Ngày khởi hành");
 
-        btgDiChuyen.add(rdoCoDiChuyen1);
-        rdoCoDiChuyen1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoDiChuyen1.setText("Có ");
+        btgDiChuyen.add(rdoCoDiChuyenNoiDia);
+        rdoCoDiChuyenNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoDiChuyenNoiDia.setText("Có ");
 
-        btgDiChuyen.add(rdoKhongDiChuyen1);
-        rdoKhongDiChuyen1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongDiChuyen1.setText("Không");
+        btgDiChuyen.add(rdoKhongDiChuyenNoiDia);
+        rdoKhongDiChuyenNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongDiChuyenNoiDia.setText("Không");
 
         btnGuiNoiDia.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnGuiNoiDia.setText("Gửi");
@@ -412,8 +530,8 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("Trong vòng 14 ngày qua, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi không?");
 
-        rdoCoTrieuChung1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoTrieuChung1.setText("Có");
+        rdoCoTrieuChungNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoTrieuChungNoiDia.setText("Có");
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setForeground(new java.awt.Color(204, 204, 204));
@@ -427,34 +545,34 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setText("Người có biểu hiện (Sốt, ho, khó thở , Viêm phổi) (*)");
 
-        rdoCoNghiNhiem1.setBackground(new java.awt.Color(204, 204, 204));
-        rdoCoNghiNhiem1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoNghiNhiem1.setText("Có");
+        rdoCoNghiNhiemNoiDia.setBackground(new java.awt.Color(204, 204, 204));
+        rdoCoNghiNhiemNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoNghiNhiemNoiDia.setText("Có");
 
-        rdoKhongNghiNhiem1.setBackground(new java.awt.Color(204, 204, 204));
-        rdoKhongNghiNhiem1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongNghiNhiem1.setText("Không");
-        rdoKhongNghiNhiem1.addActionListener(new java.awt.event.ActionListener() {
+        rdoKhongNghiNhiemNoiDia.setBackground(new java.awt.Color(204, 204, 204));
+        rdoKhongNghiNhiemNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongNghiNhiemNoiDia.setText("Không");
+        rdoKhongNghiNhiemNoiDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoKhongNghiNhiem1ActionPerformed(evt);
+                rdoKhongNghiNhiemNoiDiaActionPerformed(evt);
             }
         });
 
-        rdoCoNuocBenh1.setBackground(new java.awt.Color(204, 204, 204));
-        rdoCoNuocBenh1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoNuocBenh1.setText("Có");
+        rdoCoNuocBenhNoiDia.setBackground(new java.awt.Color(204, 204, 204));
+        rdoCoNuocBenhNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoNuocBenhNoiDia.setText("Có");
 
-        rdoKhongNuocBenh1.setBackground(new java.awt.Color(204, 204, 204));
-        rdoKhongNuocBenh1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongNuocBenh1.setText("Không");
+        rdoKhongNuocBenhNoiDia.setBackground(new java.awt.Color(204, 204, 204));
+        rdoKhongNuocBenhNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongNuocBenhNoiDia.setText("Không");
 
-        rdoCoBieuHien1.setBackground(new java.awt.Color(204, 204, 204));
-        rdoCoBieuHien1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoCoBieuHien1.setText("Có");
+        rdoCoBieuHienNoiDia.setBackground(new java.awt.Color(204, 204, 204));
+        rdoCoBieuHienNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoCoBieuHienNoiDia.setText("Có");
 
-        rdoKhongBieuHien1.setBackground(new java.awt.Color(204, 204, 204));
-        rdoKhongBieuHien1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongBieuHien1.setText("Không");
+        rdoKhongBieuHienNoiDia.setBackground(new java.awt.Color(204, 204, 204));
+        rdoKhongBieuHienNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongBieuHienNoiDia.setText("Không");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -468,14 +586,14 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdoCoNghiNhiem1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoCoNuocBenh1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoCoBieuHien1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(rdoCoNghiNhiemNoiDia, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoCoNuocBenhNoiDia, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoCoBieuHienNoiDia, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rdoKhongNghiNhiem1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoKhongNuocBenh1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdoKhongBieuHien1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(rdoKhongNghiNhiemNoiDia, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoKhongNuocBenhNoiDia, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rdoKhongBieuHienNoiDia, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -484,26 +602,26 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(rdoCoNghiNhiem1)
-                    .addComponent(rdoKhongNghiNhiem1))
+                    .addComponent(rdoCoNghiNhiemNoiDia)
+                    .addComponent(rdoKhongNghiNhiemNoiDia))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(rdoCoNuocBenh1)
-                    .addComponent(rdoKhongNuocBenh1))
+                    .addComponent(rdoCoNuocBenhNoiDia)
+                    .addComponent(rdoKhongNuocBenhNoiDia))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(rdoCoBieuHien1)
-                    .addComponent(rdoKhongBieuHien1))
+                    .addComponent(rdoCoBieuHienNoiDia)
+                    .addComponent(rdoKhongBieuHienNoiDia))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel20.setText("Trong vòng 14 ngày qua, Anh/Chị có tiếp xúc với ");
 
-        rdoKhongTrieuChung1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rdoKhongTrieuChung1.setText("Không");
+        rdoKhongTrieuChungNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rdoKhongTrieuChungNoiDia.setText("Không");
 
         javax.swing.GroupLayout jpnNoiDiaLayout = new javax.swing.GroupLayout(jpnNoiDia);
         jpnNoiDia.setLayout(jpnNoiDiaLayout);
@@ -535,12 +653,12 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                             .addComponent(jLabel15)
                             .addGroup(jpnNoiDiaLayout.createSequentialGroup()
                                 .addGroup(jpnNoiDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rdoCoDiChuyen1)
-                                    .addComponent(rdoCoTrieuChung1))
+                                    .addComponent(rdoCoDiChuyenNoiDia)
+                                    .addComponent(rdoCoTrieuChungNoiDia))
                                 .addGap(18, 18, 18)
                                 .addGroup(jpnNoiDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rdoKhongDiChuyen1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(rdoKhongTrieuChung1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(rdoKhongDiChuyenNoiDia, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(rdoKhongTrieuChungNoiDia, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(jpnNoiDiaLayout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(156, 156, 156)
@@ -574,18 +692,18 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
                 .addGroup(jpnNoiDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaHieuPhuongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoiDen, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnNoiDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoCoDiChuyen1)
-                    .addComponent(rdoKhongDiChuyen1))
+                    .addComponent(rdoCoDiChuyenNoiDia)
+                    .addComponent(rdoKhongDiChuyenNoiDia))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnNoiDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoCoTrieuChung1)
-                    .addComponent(rdoKhongTrieuChung1))
+                    .addComponent(rdoCoTrieuChungNoiDia)
+                    .addComponent(rdoKhongTrieuChungNoiDia))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel20)
                 .addGap(18, 18, 18)
@@ -607,7 +725,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         );
         jpnNhapCanhLayout.setVerticalGroup(
             jpnNhapCanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Khai báo nhập cảnh", jpnNhapCanh);
@@ -626,22 +744,23 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rdoKhongNghiNhiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoKhongNghiNhiemActionPerformed
+    private void rdoKhongNghiNhiemToanDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoKhongNghiNhiemToanDanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoKhongNghiNhiemActionPerformed
+    }//GEN-LAST:event_rdoKhongNghiNhiemToanDanActionPerformed
 
-    private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
+    private void btnGuiToanDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiToanDanActionPerformed
         // TODO add your handling code here:
-        them();
-    }//GEN-LAST:event_btnGuiActionPerformed
+        themToanDan();
+    }//GEN-LAST:event_btnGuiToanDanActionPerformed
 
     private void btnGuiNoiDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiNoiDiaActionPerformed
         // TODO add your handling code here:
+        themNoiDia();
     }//GEN-LAST:event_btnGuiNoiDiaActionPerformed
 
-    private void rdoKhongNghiNhiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoKhongNghiNhiem1ActionPerformed
+    private void rdoKhongNghiNhiemNoiDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoKhongNghiNhiemNoiDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoKhongNghiNhiem1ActionPerformed
+    }//GEN-LAST:event_rdoKhongNghiNhiemNoiDiaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -650,8 +769,8 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup btgNghiNhiem;
     private javax.swing.ButtonGroup btgNuocBenh;
     private javax.swing.ButtonGroup btgTrieuChung;
-    private javax.swing.JButton btnGui;
     private javax.swing.JButton btnGuiNoiDia;
+    private javax.swing.JButton btnGuiToanDan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -678,26 +797,26 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpnNhapCanh;
     private javax.swing.JPanel jpnNoiDia;
     private javax.swing.JPanel jpnToanDan;
-    private javax.swing.JRadioButton rdoCoBieuHien;
-    private javax.swing.JRadioButton rdoCoBieuHien1;
-    private javax.swing.JRadioButton rdoCoDiChuyen;
-    private javax.swing.JRadioButton rdoCoDiChuyen1;
-    private javax.swing.JRadioButton rdoCoNghiNhiem;
-    private javax.swing.JRadioButton rdoCoNghiNhiem1;
-    private javax.swing.JRadioButton rdoCoNuocBenh;
-    private javax.swing.JRadioButton rdoCoNuocBenh1;
-    private javax.swing.JRadioButton rdoCoTrieuChung;
-    private javax.swing.JRadioButton rdoCoTrieuChung1;
-    private javax.swing.JRadioButton rdoKhongBieuHien;
-    private javax.swing.JRadioButton rdoKhongBieuHien1;
-    private javax.swing.JRadioButton rdoKhongDiChuyen;
-    private javax.swing.JRadioButton rdoKhongDiChuyen1;
-    private javax.swing.JRadioButton rdoKhongNghiNhiem;
-    private javax.swing.JRadioButton rdoKhongNghiNhiem1;
-    private javax.swing.JRadioButton rdoKhongNuocBenh;
-    private javax.swing.JRadioButton rdoKhongNuocBenh1;
-    private javax.swing.JRadioButton rdoKhongTrieuChung;
-    private javax.swing.JRadioButton rdoKhongTrieuChung1;
+    private javax.swing.JRadioButton rdoCoBieuHienNoiDia;
+    private javax.swing.JRadioButton rdoCoBieuHienToanDan;
+    private javax.swing.JRadioButton rdoCoDiChuyenNoiDia;
+    private javax.swing.JRadioButton rdoCoDiChuyenToanDan;
+    private javax.swing.JRadioButton rdoCoNghiNhiemNoiDia;
+    private javax.swing.JRadioButton rdoCoNghiNhiemToanDan;
+    private javax.swing.JRadioButton rdoCoNuocBenhNoiDia;
+    private javax.swing.JRadioButton rdoCoNuocBenhToanDan;
+    private javax.swing.JRadioButton rdoCoTrieuChungNoiDia;
+    private javax.swing.JRadioButton rdoCoTrieuChungToanDan;
+    private javax.swing.JRadioButton rdoKhongBieuHienNoiDia;
+    private javax.swing.JRadioButton rdoKhongBieuHienToanDan;
+    private javax.swing.JRadioButton rdoKhongDiChuyenNoiDia;
+    private javax.swing.JRadioButton rdoKhongDiChuyenToanDan;
+    private javax.swing.JRadioButton rdoKhongNghiNhiemNoiDia;
+    private javax.swing.JRadioButton rdoKhongNghiNhiemToanDan;
+    private javax.swing.JRadioButton rdoKhongNuocBenhNoiDia;
+    private javax.swing.JRadioButton rdoKhongNuocBenhToanDan;
+    private javax.swing.JRadioButton rdoKhongTrieuChungNoiDia;
+    private javax.swing.JRadioButton rdoKhongTrieuChungToanDan;
     private javax.swing.JTextField txtMaHieuPhuongTien;
     private javax.swing.JTextField txtNgayKhoiHanh;
     private javax.swing.JTextField txtNoiDen;

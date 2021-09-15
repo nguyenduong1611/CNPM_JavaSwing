@@ -69,40 +69,42 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel8" alignment="1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel9" min="-2" pref="1033" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="227" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rdoCoDiChuyen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdoCoTrieuChung" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rdoKhongDiChuyen" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rdoKhongTrieuChung" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                              <Component id="btnGui" min="-2" pref="141" max="-2" attributes="0"/>
+                              <Component id="btnGuiToanDan" min="-2" pref="141" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="rdoCoDiChuyenToanDan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdoCoTrieuChungToanDan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="rdoKhongDiChuyenToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdoKhongTrieuChungToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel9" min="-2" pref="1033" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -115,21 +117,21 @@
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                      <EmptySpace pref="174" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rdoCoDiChuyen" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdoKhongDiChuyen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoCoDiChuyenToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoKhongDiChuyenToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rdoCoTrieuChung" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdoKhongTrieuChung" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoCoTrieuChungToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoKhongTrieuChungToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="107" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -138,7 +140,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnGui" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="btnGuiToanDan" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -185,15 +187,15 @@
                           </Group>
                           <EmptySpace pref="18" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="rdoCoNghiNhiem" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoNuocBenh" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoBieuHien" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNghiNhiemToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNuocBenhToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoBieuHienToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="rdoKhongNghiNhiem" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongNuocBenh" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongBieuHien" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNghiNhiemToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNuocBenhToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongBieuHienToanDan" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
@@ -205,20 +207,20 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoNghiNhiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongNghiNhiem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNghiNhiemToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNghiNhiemToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoNuocBenh" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongNuocBenh" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNuocBenhToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNuocBenhToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoBieuHien" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongBieuHien" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoBieuHienToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongBieuHienToanDan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="30" max="32767" attributes="0"/>
                       </Group>
@@ -250,7 +252,7 @@
                     <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i c&#xf3; bi&#x1ec3;u hi&#x1ec7;n (S&#x1ed1;t, ho, kh&#xf3; th&#x1edf; , Vi&#xea;m ph&#x1ed5;i) (*)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoCoNghiNhiem">
+                <Component class="javax.swing.JRadioButton" name="rdoCoNghiNhiemToanDan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -261,7 +263,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoKhongNghiNhiem">
+                <Component class="javax.swing.JRadioButton" name="rdoKhongNghiNhiemToanDan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -272,10 +274,10 @@
                     <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoKhongNghiNhiemActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoKhongNghiNhiemToanDanActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoCoNuocBenh">
+                <Component class="javax.swing.JRadioButton" name="rdoCoNuocBenhToanDan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -286,7 +288,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoKhongNuocBenh">
+                <Component class="javax.swing.JRadioButton" name="rdoKhongNuocBenhToanDan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -297,7 +299,7 @@
                     <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoCoBieuHien">
+                <Component class="javax.swing.JRadioButton" name="rdoCoBieuHienToanDan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -308,7 +310,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoKhongBieuHien">
+                <Component class="javax.swing.JRadioButton" name="rdoKhongBieuHienToanDan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -338,7 +340,7 @@
                 <Property name="text" type="java.lang.String" value="TH&#xd4;NG TIN KHAI B&#xc1;O Y T&#x1ebe;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoCoDiChuyen">
+            <Component class="javax.swing.JRadioButton" name="rdoCoDiChuyenToanDan">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btgDiChuyen"/>
@@ -349,7 +351,7 @@
                 <Property name="text" type="java.lang.String" value="C&#xf3; "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoKhongDiChuyen">
+            <Component class="javax.swing.JRadioButton" name="rdoKhongDiChuyenToanDan">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btgDiChuyen"/>
@@ -360,7 +362,7 @@
                 <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoCoTrieuChung">
+            <Component class="javax.swing.JRadioButton" name="rdoCoTrieuChungToanDan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
@@ -368,7 +370,7 @@
                 <Property name="text" type="java.lang.String" value="C&#xf3;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoKhongTrieuChung">
+            <Component class="javax.swing.JRadioButton" name="rdoKhongTrieuChungToanDan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
@@ -376,7 +378,7 @@
                 <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnGui">
+            <Component class="javax.swing.JButton" name="btnGuiToanDan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
@@ -384,7 +386,7 @@
                 <Property name="text" type="java.lang.String" value="G&#x1eed;i"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuiActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuiToanDanActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -455,13 +457,13 @@
                                   <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="rdoCoDiChuyen1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rdoCoTrieuChung1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdoCoDiChuyenNoiDia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdoCoTrieuChungNoiDia" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="rdoKhongDiChuyen1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rdoKhongTrieuChung1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdoKhongDiChuyenNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdoKhongTrieuChungNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -508,19 +510,19 @@
                           <Component id="txtMaHieuPhuongTien" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="txtNoiDen" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rdoCoDiChuyen1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdoKhongDiChuyen1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoCoDiChuyenNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoKhongDiChuyenNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rdoCoTrieuChung1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdoKhongTrieuChung1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoCoTrieuChungNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoKhongTrieuChungNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
@@ -588,7 +590,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNoiDi">
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoCoDiChuyen1">
+            <Component class="javax.swing.JRadioButton" name="rdoCoDiChuyenNoiDia">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btgDiChuyen"/>
@@ -599,7 +601,7 @@
                 <Property name="text" type="java.lang.String" value="C&#xf3; "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoKhongDiChuyen1">
+            <Component class="javax.swing.JRadioButton" name="rdoKhongDiChuyenNoiDia">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btgDiChuyen"/>
@@ -637,7 +639,7 @@
                 <Property name="text" type="java.lang.String" value="Trong v&#xf2;ng 14 ng&#xe0;y qua, Anh/Ch&#x1ecb; c&#xf3; th&#x1ea5;y xu&#x1ea5;t hi&#x1ec7;n &#xed;t nh&#x1ea5;t 1 trong c&#xe1;c d&#x1ea5;u hi&#x1ec7;u: s&#x1ed1;t, ho, kh&#xf3; th&#x1edf;, vi&#xea;m ph&#x1ed5;i, &#x111;au h&#x1ecd;ng, m&#x1ec7;t m&#x1ecf;i kh&#xf4;ng?"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoCoTrieuChung1">
+            <Component class="javax.swing.JRadioButton" name="rdoCoTrieuChungNoiDia">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
@@ -667,15 +669,15 @@
                           </Group>
                           <EmptySpace pref="18" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="rdoCoNghiNhiem1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoNuocBenh1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoBieuHien1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNghiNhiemNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNuocBenhNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoBieuHienNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="rdoKhongNghiNhiem1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongNuocBenh1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongBieuHien1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNghiNhiemNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNuocBenhNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongBieuHienNoiDia" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
@@ -687,20 +689,20 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoNghiNhiem1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongNghiNhiem1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNghiNhiemNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNghiNhiemNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoNuocBenh1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongNuocBenh1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoNuocBenhNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongNuocBenhNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoCoBieuHien1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rdoKhongBieuHien1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoCoBieuHienNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdoKhongBieuHienNoiDia" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="30" max="32767" attributes="0"/>
                       </Group>
@@ -732,7 +734,7 @@
                     <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i c&#xf3; bi&#x1ec3;u hi&#x1ec7;n (S&#x1ed1;t, ho, kh&#xf3; th&#x1edf; , Vi&#xea;m ph&#x1ed5;i) (*)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoCoNghiNhiem1">
+                <Component class="javax.swing.JRadioButton" name="rdoCoNghiNhiemNoiDia">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -743,7 +745,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoKhongNghiNhiem1">
+                <Component class="javax.swing.JRadioButton" name="rdoKhongNghiNhiemNoiDia">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -754,10 +756,10 @@
                     <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoKhongNghiNhiem1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoKhongNghiNhiemNoiDiaActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoCoNuocBenh1">
+                <Component class="javax.swing.JRadioButton" name="rdoCoNuocBenhNoiDia">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -768,7 +770,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoKhongNuocBenh1">
+                <Component class="javax.swing.JRadioButton" name="rdoKhongNuocBenhNoiDia">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -779,7 +781,7 @@
                     <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoCoBieuHien1">
+                <Component class="javax.swing.JRadioButton" name="rdoCoBieuHienNoiDia">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -790,7 +792,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoKhongBieuHien1">
+                <Component class="javax.swing.JRadioButton" name="rdoKhongBieuHienNoiDia">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -811,7 +813,7 @@
                 <Property name="text" type="java.lang.String" value="Trong v&#xf2;ng 14 ng&#xe0;y qua, Anh/Ch&#x1ecb; c&#xf3; ti&#x1ebf;p x&#xfa;c v&#x1edb;i "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdoKhongTrieuChung1">
+            <Component class="javax.swing.JRadioButton" name="rdoKhongTrieuChungNoiDia">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
@@ -838,7 +840,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="625" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="659" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
