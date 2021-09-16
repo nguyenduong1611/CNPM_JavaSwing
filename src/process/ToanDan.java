@@ -19,11 +19,12 @@ public class ToanDan {
     private String nghinhiem;
     private String nuocbenh;
     private String bieuhien;
+    private String ngaykhaibao;
             
     public ToanDan(){
         
     }
-    public ToanDan(String id, String nguoidung_id, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien){
+    public ToanDan(String id, String nguoidung_id, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien, String ngaykhaibao){
         this.id = id;
         this.nguoidung_id = nguoidung_id;
         this.dichuyen = dichuyen;
@@ -31,6 +32,11 @@ public class ToanDan {
         this.nghinhiem = nghinhiem;
         this.nuocbenh = nuocbenh;
         this.bieuhien = bieuhien;
+        this.ngaykhaibao = ngaykhaibao;
+    }
+
+    public ToanDan(String nguoidung_id, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien, String ngaykhaibao) {
+        
     }
 
     public ToanDan(String nguoidung_id, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien) {
@@ -91,6 +97,14 @@ public class ToanDan {
 
     public void setBieuhien(String bieuhien) {
         this.bieuhien = bieuhien;
+    }
+
+    public String getNgaykhaibao() {
+        return ngaykhaibao;
+    }
+
+    public void setNgaykhaibao(String ngaykhaibao) {
+        this.ngaykhaibao = ngaykhaibao;
     }
 
     

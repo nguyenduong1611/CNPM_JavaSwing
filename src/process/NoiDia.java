@@ -23,12 +23,13 @@ public class NoiDia {
     private String nghinhiem;
     private String nuocbenh;
     private String bieuhien;
+    private String ngaykhaibao;
 
     public NoiDia() {
 
     }
 
-    public NoiDia(String id, String nguoidung_id, String phuongtien, String mahieuphuongtien, String noidi, String noiden, String ngaykhoihanh, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien) {
+    public NoiDia(String id, String nguoidung_id, String phuongtien, String mahieuphuongtien, String noidi, String noiden, String ngaykhoihanh, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien, String ngaykhaibao) {
         this.id = id;
         this.nguoidung_id = nguoidung_id;
         this.phuongtien = phuongtien;
@@ -41,10 +42,15 @@ public class NoiDia {
         this.nghinhiem = nghinhiem;
         this.nuocbenh = nuocbenh;
         this.bieuhien = bieuhien;
+        this.ngaykhaibao = ngaykhaibao;
+    }
+
+    public NoiDia(String nguoidung_id, String phuongtien, String mahieuphuongtien, String noidi, String noiden, String ngaykhoihanh, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien, String ngaykhaibao) {
+        
     }
 
     public NoiDia(String nguoidung_id, String phuongtien, String mahieuphuongtien, String noidi, String noiden, String ngaykhoihanh, String dichuyen, String trieuchung, String nghinhiem, String nuocbenh, String bieuhien) {
-        
+       
     }
 
     public String getId() {
@@ -141,6 +147,14 @@ public class NoiDia {
 
     public void setBieuhien(String bieuhien) {
         this.bieuhien = bieuhien;
+    }
+
+    public String getNgaykhaibao() {
+        return ngaykhaibao;
+    }
+
+    public void setNgaykhaibao(String ngaykhaibao) {
+        this.ngaykhaibao = ngaykhaibao;
     }
 
     

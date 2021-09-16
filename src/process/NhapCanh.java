@@ -24,12 +24,13 @@ public class NhapCanh {
     private String ho;
     private String khotho;
     private String dauhong;
+    private String ngaykhaibao;
 
     public NhapCanh() {
 
     }
 
-    public NhapCanh(String id, String nguoidung_id, String cuakhau, String thongtindilai, String ngaykhoihanh, String ngaynhapcanh, String diachikhoihanh, String diachiden, String noiosaucachly, String sot, String ho, String khotho, String dauhong) {
+    public NhapCanh(String id, String nguoidung_id, String cuakhau, String thongtindilai, String ngaykhoihanh, String ngaynhapcanh, String diachikhoihanh, String diachiden, String noiosaucachly, String sot, String ho, String khotho, String dauhong, String ngaykhaibao) {
         this.id = id;
         this.nguoidung_id = nguoidung_id;
         this.cuakhau = cuakhau;
@@ -43,6 +44,11 @@ public class NhapCanh {
         this.ho = ho;
         this.khotho = khotho;
         this.dauhong = dauhong;
+        this.ngaykhaibao = ngaykhaibao;
+    }
+
+    public NhapCanh(String nguoidung_id, String cuakhau, String thongtindilai, String ngaykhoihanh, String ngaynhapcanh, String diachikhoihanh, String diachiden, String noiosaucachly, String sot, String ho, String khotho, String dauhong) {
+        
     }
 
     public String getId() {
@@ -147,6 +153,14 @@ public class NhapCanh {
 
     public void setDauhong(String dauhong) {
         this.dauhong = dauhong;
+    }
+
+    public String getNgaykhaibao() {
+        return ngaykhaibao;
+    }
+
+    public void setNgaykhaibao(String ngaykhaibao) {
+        this.ngaykhaibao = ngaykhaibao;
     }
 
     
