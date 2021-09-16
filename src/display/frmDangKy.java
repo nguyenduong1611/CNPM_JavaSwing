@@ -22,34 +22,37 @@ import process.ThongTinNguoiDung;
  * @author ASUS
  */
 public class frmDangKy extends javax.swing.JFrame {
-    public  static String ID_user ;
+
+    public static String ID_user;
     Connection conn;
     Statement st;
     ResultSet rs;
     List<NguoiDung> listNguoiDung = new ArrayList<>();
     List<ThongTinNguoiDung> listThongTinNguoiDung = new ArrayList<>();
-    
+
     /**
      * Creates new form frmDangKy
      */
     public frmDangKy() {
         initComponents();
         setLocationRelativeTo(this);
+        rdoNam.setSelected(true);
         conn = Ket_Noi.ket_noi("KhaiBaoYTe");
-        if(conn != null){
+        if (conn != null) {
             LoadDataToListNguoiDung();
             LoadDataToListThongTinNguoiDung();
-        }else{
+        } else {
             System.out.println("Lỗi kết nối!!");
         }
     }
-    private void LoadDataToListNguoiDung(){
+
+    private void LoadDataToListNguoiDung() {
         try {
             String sql = "select * from NguoiDung";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 String id = rs.getString("id");
                 String sdt = rs.getString("sdt");
                 String password = rs.getString("password");
@@ -63,9 +66,9 @@ public class frmDangKy extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi load data nguoi dung to list ");
         }
     }
-    
-    private void LoadDataToListThongTinNguoiDung(){
-        try{
+
+    private void LoadDataToListThongTinNguoiDung() {
+        try {
             String sql = "select * from ThongTinNguoiDung";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -89,44 +92,27 @@ public class frmDangKy extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi load data thong tin nguoi dung to list ");
         }
     }
-    public void checkSDT(){
-        String sdt = txtSDT.getText();
-        for(NguoiDung nd : listNguoiDung){
-            if(nd.getSdt().equalsIgnoreCase(sdt)){
-               JOptionPane.showMessageDialog(this,"số điện thoại đã tồn tại");
-            }else{
-                themnguoidung();
+    
+    public boolean checkSDT() {
+        String SDT = txtSDT.getText();
+        for (NguoiDung nd : listNguoiDung) {
+            if (nd.getSdt().equalsIgnoreCase(SDT)) {
+                return false;
             }
         }
-        
+        return true;
     }
-    
-    public void checkMK(){
+
+    public boolean checkMK() {
         String matkhau = new String(txtMatKhau.getPassword());
         String nhaplaimk = new String(txtNhapLaiMatKhau.getPassword());
-        if(matkhau.equalsIgnoreCase(nhaplaimk)){
-            themThongTinNguoiDung();
+        if (matkhau.equalsIgnoreCase(nhaplaimk)) {
+            return true;
         }
-        JOptionPane.showMessageDialog(this, "Mật khẩu nhập lại không khớp");
+        return false;
     }
-    
-    public void themnguoidung(){
-        try {
-            String sdt = txtSDT.getText();
-            String password = new String(txtMatKhau.getPassword());
-            String role = "user";
-            listNguoiDung.add(new NguoiDung(sdt, password, role));
-            //them vao database
-            String sql = "insert into NguoiDung(sdt,password,role)\n"
-                    + " values('"+sdt+"','"+password+"','"+role+"')";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.executeUpdate();
-//            JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng thành công");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Thêm người dùng không thành công");
-        }
-    }
-    public void getIdFromUser(){
+
+    public void getIdFromUser() {
         try {
             String sql = "select id from NguoiDung where sdt=? and password=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -135,7 +121,7 @@ public class frmDangKy extends javax.swing.JFrame {
 
             pstm.setString(1, sdt);
             pstm.setString(2, password);
-            
+
             rs = pstm.executeQuery();
             while (rs.next()) {
                 ID_user = rs.getString("id");
@@ -146,7 +132,23 @@ public class frmDangKy extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    public void themThongTinNguoiDung(){
+
+    public void themnguoidung() {
+        try {
+            String sdt = txtSDT.getText();
+            String password = new String(txtMatKhau.getPassword());
+            String role = "user";
+            listNguoiDung.add(new NguoiDung(sdt, password, role));
+            //them vao database
+            String sql = "insert into NguoiDung(sdt,password,role)\n"
+                    + " values('" + sdt + "','" + password + "','" + role + "')";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void themThongTinNguoiDung() {
         try {
             String nguoidung_id = ID_user;
             String hoten = txtHoTen.getText();
@@ -154,9 +156,9 @@ public class frmDangKy extends javax.swing.JFrame {
             String diachi = txtDiaChi.getText();
             String cccd = txtCCCD.getText();
             String gioitinh;
-            if(rdoNam.isSelected()){
+            if (rdoNam.isSelected()) {
                 gioitinh = "nam";
-            }else{
+            } else {
                 gioitinh = "nữ";
             }
             String email = txtEmail.getText();
@@ -164,14 +166,17 @@ public class frmDangKy extends javax.swing.JFrame {
             listThongTinNguoiDung.add(new ThongTinNguoiDung(nguoidung_id, hoten, namsinh, diachi, cccd, gioitinh, email, quoctich));
             //them vao database
             String sql = "insert into ThongTinNguoiDung(nguoidung_id,hoten,namsinh,diachi,cccd,gioitinh,email,quoctich)\n"
-                    + " values('" + nguoidung_id + "',N'" + hoten + "','" + namsinh + "','" + diachi + "','" + cccd + "',N'" + gioitinh + "','"+email+"','"+quoctich+"')";
+                    + " values('" + nguoidung_id + "',N'" + hoten + "','" + namsinh + "',N'" + diachi + "','" + cccd + "',N'" + gioitinh + "','" + email + "',N'" + quoctich + "')";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "Đăng ký tài khoản thành công");
+            this.dispose();
+            frmLogin login = new frmLogin();
+            login.setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng không thành công");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -368,19 +373,24 @@ public class frmDangKy extends javax.swing.JFrame {
 
     private void btnDangkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangkyActionPerformed
         // TODO add your handling code here:
-//        checkSDT();
-//        checkMK();
-        themnguoidung();
-        getIdFromUser();
-        themThongTinNguoiDung();
-        frmLogin login = new frmLogin();
-        login.setVisible(true);
-        this.dispose();
+        if (checkSDT()) {
+            if (checkMK()) {
+                themnguoidung();
+                getIdFromUser();
+                themThongTinNguoiDung();
+            } else {
+                JOptionPane.showMessageDialog(this, "Mật khẩu nhập lại không khớp");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại");
+        }
     }//GEN-LAST:event_btnDangkyActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        frmLogin login = new frmLogin();
+        login.setVisible(true);
     }//GEN-LAST:event_btnThoatActionPerformed
 
     /**

@@ -29,6 +29,10 @@ public class NguoiDung {
         
     }
 
+    public NguoiDung(String SDT) {
+        
+    }
+
    
 
     public String getId() {
