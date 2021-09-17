@@ -21,6 +21,7 @@ public class frmMenu extends javax.swing.JFrame {
     frmTrangChu TRANGCHU = new frmTrangChu();
     frmNguoiDung NGUOIDUNG = new frmNguoiDung();
     frmKhaiBao KHAIBAO = new frmKhaiBao();
+    frmQLToKhai TOKHAI = new frmQLToKhai();
     /**
      * Creates new form frmMenu
      */
@@ -80,6 +81,11 @@ public class frmMenu extends javax.swing.JFrame {
         });
 
         btnQLToKhai.setText("QUẢN LÝ TỜ KHAI");
+        btnQLToKhai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLToKhaiActionPerformed(evt);
+            }
+        });
 
         btnKhaiBao.setText("KHAI BAO Y TẾ");
         btnKhaiBao.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +207,13 @@ public class frmMenu extends javax.swing.JFrame {
         NGUOIDUNG.setVisible(true);
         dekMenuChinh.add(NGUOIDUNG);
     }//GEN-LAST:event_btnQLNguoiDungActionPerformed
+
+    private void btnQLToKhaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLToKhaiActionPerformed
+        // TODO add your handling code here:
+        dekMenuChinh.removeAll();
+        TOKHAI.setVisible(true);
+        dekMenuChinh.add(TOKHAI);
+    }//GEN-LAST:event_btnQLToKhaiActionPerformed
 
     /**
      * @param args the command line arguments

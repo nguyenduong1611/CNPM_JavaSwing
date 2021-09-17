@@ -107,8 +107,9 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
         tblNguoiDung.setRowSelectionInterval(index, index);
 
     }
-    public void clearForm(){
-        try{
+
+    public void clearForm() {
+        try {
             txtID.setText("");
             txtNguoiDung_ID.setText("");
             txtHoTen.setText("");
@@ -118,12 +119,13 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
             rdoNam.setSelected(true);
             txtEmail.setText("");
             txtQuocTich.setText("");
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }
+
     // load lai table
-    public void loadForm(){
+    public void loadForm() {
         try {
             bll.ViewNguoiDung.HienThiTTNguoiDung(tblNguoiDung);
         } catch (Exception e) {
@@ -141,8 +143,7 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
             String gioitinh;
             if (rdoNam.isSelected()) {
                 gioitinh = "nam";
-            }else
-            {
+            } else {
                 gioitinh = "nữ";
             }
             String email = txtEmail.getText();
@@ -150,7 +151,7 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
             list.add(new ThongTinNguoiDung(nguoidung_id, hoten, namsinh, diachi, cccd, gioitinh, email, quoctich));
             //them vao database
             String sql = "insert into ThongTinNguoiDung(nguoidung_id,hoten,namsinh,diachi,cccd,gioitinh,email,quoctich)\n"
-                    + " values('" + nguoidung_id + "',N'" + hoten + "','" + namsinh + "','" + diachi + "','" + cccd + "',N'" + gioitinh + "','"+email+"','"+quoctich+"')";
+                    + " values('" + nguoidung_id + "',N'" + hoten + "','" + namsinh + "','" + diachi + "','" + cccd + "',N'" + gioitinh + "','" + email + "','" + quoctich + "')";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng thành công");
@@ -159,34 +160,34 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Thêm thông tin người dùng không thành công");
         }
     }
-    
-    public void xoa(){
+
+    public void xoa() {
         try {
-            if(list.size() <= 0){
+            if (list.size() <= 0) {
                 JOptionPane.showMessageDialog(this, "Không còn dữ liệu để xóa");
                 return;
             }
             int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-            if(hoi != JOptionPane.YES_OPTION){
+            if (hoi != JOptionPane.YES_OPTION) {
                 return;
             }
             // xoa trong list
             index = tblNguoiDung.getSelectedRow();
             list.remove(index);
-            
+
             // xoa trong csdl
             String sql = "delete from ThongTinNguoiDung\n"
-                    + "where id ='"+txtID.getText()+"'";
+                    + "where id ='" + txtID.getText() + "'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(this,"Xóa dữ liệu thành công");
+            JOptionPane.showMessageDialog(this, "Xóa dữ liệu thành công");
             fillToTable();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Xóa dữ liệu không thành công");
+            JOptionPane.showMessageDialog(this, "Xóa dữ liệu không thành công");
         }
     }
-    
-    public void sua(){
+
+    public void sua() {
         try {
             String id = txtID.getText();
             String nguoidung_id = txtNguoiDung_ID.getText();
@@ -197,28 +198,26 @@ public class frmNguoiDung extends javax.swing.JInternalFrame {
             String gioitinh;
             if (rdoNam.isSelected()) {
                 gioitinh = "nam";
-            }else
-            {
+            } else {
                 gioitinh = "nữ";
             }
             String email = txtEmail.getText();
             String quoctich = txtQuocTich.getText();
             list.set(index, new ThongTinNguoiDung(id, nguoidung_id, hoten, namsinh, diachi, cccd, gioitinh, email, quoctich));
             // sua vao csdl
-            String sql = "update ThongTinNguoiDung set nguoidung_id='"+nguoidung_id+"'\n"
-                    + ",hoten=N'"+hoten+"',namsinh='"+namsinh+"',diachi=N'"+diachi+"'\n"
-                    + ",cccd='"+cccd+"',gioitinh=N'"+gioitinh+"',email='"+email+"'\n"
-                    + ",quoctich=N'"+quoctich+"'\n"
-                    + "where id='"+id+"'";
+            String sql = "update ThongTinNguoiDung set nguoidung_id='" + nguoidung_id + "'\n"
+                    + ",hoten=N'" + hoten + "',namsinh='" + namsinh + "',diachi=N'" + diachi + "'\n"
+                    + ",cccd='" + cccd + "',gioitinh=N'" + gioitinh + "',email='" + email + "'\n"
+                    + ",quoctich=N'" + quoctich + "'\n"
+                    + "where id='" + id + "'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(this,"Sửa dữ liệu thành công");
+            JOptionPane.showMessageDialog(this, "Sửa dữ liệu thành công");
             fillToTable();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Sửa dữ liệu không thành công");
+            JOptionPane.showMessageDialog(this, "Sửa dữ liệu không thành công");
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -50,7 +50,7 @@ public class NhapCanh {
     public NhapCanh(String nguoidung_id, String cuakhau, String thongtindilai, String ngaykhoihanh, String ngaynhapcanh, String diachikhoihanh, String diachiden, String noiosaucachly, String sot, String ho, String khotho, String dauhong) {
         
     }
-
+    
     public String getId() {
         return id;
     }
