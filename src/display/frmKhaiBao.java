@@ -234,11 +234,17 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             } else {
                 bieuhien = "không";
             }
-            QRNoiDia ="Mã người dùng: "+nguoidung_id+" /Phương tiện:"+phuongtien+"\n"
-                    + " /Mã hiệu phương tiện:"+mahieuphuongtien+" /Nơi đi:"+noidi+"\n"
-                    + " /Nơi đến:"+noiden+" /Ngày khởi hành"+ngaykhoihanh+"/Di chuyển:"+dichuyen+"\n"
-                    + " /Triệu chứng:"+trieuchung+" /Nghi nhiễm: "+nghinhiem+"\n"
-                    + " /Nước bệnh: "+nuocbenh+" /Biểu hiện: "+bieuhien+"";
+            QRNoiDia ="Ma nguoi dung: "+nguoidung_id+"\n"
+                    + "Phuong tien:"+phuongtien+"\n"
+                    + "Ma hieu phuong tien:"+mahieuphuongtien+"\n"
+                    + "Noi di:"+noidi+"\n"
+                    + "Noi den:"+noiden+"\n"
+                    + "Ngay khoi hanh"+ngaykhoihanh+"\n"
+                    + "Di chuyen:"+dichuyen+"\n"
+                    + "Trieu chung:"+trieuchung+"\n"
+                    + "Nghi nhiem: "+nghinhiem+"\n"
+                    + "Nuoc benh: "+nuocbenh+"\n"
+                    + "Bieu hien: "+bieuhien+"";
             listNoiDia.add(new NoiDia(nguoidung_id, phuongtien, mahieuphuongtien, noidi, noiden, ngaykhoihanh, dichuyen, trieuchung, nghinhiem, nuocbenh, bieuhien));
 //            System.out.println("them vao list thanh cong");
             // them vao database
@@ -290,12 +296,18 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         } else {
             dauhong = "không";
         }
-        QRNhapCanh ="Mã người dùng: "+nguoidung_id+" /Cửa khẩu:"+cuakhau+"\n"
-                    + " /Thông tin đi lại:"+thongtindilai+" /Ngày khởi hành:"+ngaykhoihanh+"\n"
-                    + " /Ngày nhập cảnh:"+ngaynhapcanh+" /Địa chỉ khởi hành"+diachikhoihanh+"\n"
-                    + "/Địa chỉ đến:"+diachiden+"\n"
-                    + " /Nơi ở sau cách ly:"+noiosaucachly+" /Sốt: "+sot+"\n"
-                    + " /Ho: "+ho+" /Khó thở: "+khotho+" /Đau họng:"+dauhong+"";
+        QRNhapCanh =  "Ma nguoi dung: "+nguoidung_id+"\n"
+                    + "Cua khau:"+cuakhau+"\n"
+                    + "Thong tin di lai:"+thongtindilai+"\n"
+                    + "Ngay khoi hanh:"+ngaykhoihanh+"\n"
+                    + "Ngay nhap canh:"+ngaynhapcanh+"\n"
+                    + "Dia chi khoi hanh"+diachikhoihanh+"\n"
+                    + "Dia chi den:"+diachiden+"\n"
+                    + "Noi o sau cach ly:"+noiosaucachly+"\n"
+                    + "Sot: "+sot+"\n"
+                    + "Ho: "+ho+"\n"
+                    + "Kho tho: "+khotho+" \n"
+                    + "Dau hong:"+dauhong+"";
         listNhapCanh.add(new NhapCanh(nguoidung_id, cuakhau, thongtindilai, ngaykhoihanh, ngaynhapcanh, diachikhoihanh, diachiden, noiosaucachly, sot, ho, khotho, dauhong));
         //them vao data base
         try {
