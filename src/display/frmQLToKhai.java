@@ -270,6 +270,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         jLabel1.setText("Tìm Kiếm");
 
         btnLamMoiToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLamMoiToanDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
         btnLamMoiToanDan.setText("Làm mới");
         btnLamMoiToanDan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +283,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         jLabel2.setText("QUẢN LÝ KHAI BÁO Y TẾ TOÀN DÂN");
 
         btnTimKiemToanDan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTimKiemToanDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
         btnTimKiemToanDan.setText("Tìm kiếm");
         btnTimKiemToanDan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,7 +308,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                                 .addComponent(btnTimKiemToanDan)
                                 .addGap(66, 66, 66)
                                 .addComponent(btnLamMoiToanDan)))
-                        .addGap(0, 493, Short.MAX_VALUE)))
+                        .addGap(0, 437, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -320,8 +322,8 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiemToanDan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLamMoiToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(btnTimKiemToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                    .addComponent(btnLamMoiToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTimKiemToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jscrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -343,6 +345,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         jLabel3.setText("Tìm kiếm:");
 
         btnTimKiemNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTimKiemNoiDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
         btnTimKiemNoiDia.setText("Tìm Kiếm");
         btnTimKiemNoiDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,6 +354,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         });
 
         btnLamMoiNoiDia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLamMoiNoiDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
         btnLamMoiNoiDia.setText("Làm mới");
         btnLamMoiNoiDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,12 +379,12 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(txtTimKiemNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(87, 87, 87)
-                        .addComponent(btnTimKiemNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(btnLamMoiNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 426, Short.MAX_VALUE)))
+                        .addComponent(btnTimKiemNoiDia)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnLamMoiNoiDia)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
         );
         jpnNoiDiaLayout.setVerticalGroup(
             jpnNoiDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +401,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                         .addComponent(btnTimKiemNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLamMoiNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("QL Tờ khai di chuyển nội địa", jpnNoiDia);
@@ -419,6 +423,8 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Tìm kiếm:");
 
+        btnTimKiemNhapCanh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTimKiemNhapCanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
         btnTimKiemNhapCanh.setText("Tìm kiếm");
         btnTimKiemNhapCanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,6 +432,8 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLamMoiNhapCanh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLamMoiNhapCanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
         btnLamMoiNhapCanh.setText("Làm mới");
         btnLamMoiNhapCanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,17 +449,17 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
             .addGroup(jpnNhapCanhLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpnNhapCanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
                     .addGroup(jpnNhapCanhLayout.createSequentialGroup()
                         .addGroup(jpnNhapCanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addGroup(jpnNhapCanhLayout.createSequentialGroup()
                                 .addComponent(txtTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(85, 85, 85)
-                                .addComponent(btnTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTimKiemNhapCanh)
                                 .addGap(42, 42, 42)
-                                .addComponent(btnLamMoiNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 542, Short.MAX_VALUE)))
+                                .addComponent(btnLamMoiNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpnNhapCanhLayout.setVerticalGroup(
@@ -462,12 +470,13 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addGroup(jpnNhapCanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLamMoiNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpnNhapCanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnNhapCanhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLamMoiNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("QL Tờ khai nhập cảnh", jpnNhapCanh);

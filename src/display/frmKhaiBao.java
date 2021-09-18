@@ -5,13 +5,25 @@
  */
 package display;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import extensions.Ket_Noi;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import process.NhapCanh;
 import process.NoiDia;
@@ -27,6 +39,9 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
     List<ToanDan> list = new ArrayList<>();
     List<NoiDia> listNoiDia = new ArrayList<>();
     List<NhapCanh> listNhapCanh = new ArrayList<>();
+    String QRToanDan;
+    String QRNoiDia;
+    String QRNhapCanh;
 
     /**
      * Creates new form frmKhaiBao
@@ -163,6 +178,9 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             } else {
                 bieuhien = "không";
             }
+            QRToanDan ="Mã người dùng: "+nguoidung_id+" /Di chuyển:"+dichuyen+"\n"
+                    + " /Triệu chứng:"+trieuchung+" /Nghi nhiễm: "+nghinhiem+"\n"
+                    + " /Nước bệnh: "+nuocbenh+" /Biểu hiện: "+bieuhien+"";
             list.add(new ToanDan(nguoidung_id, dichuyen, trieuchung, nghinhiem, nuocbenh, bieuhien));
             //them vao database
             String sql = "insert into KhaiBaoToanDan(nguoidung_id,dichuyen,trieuchung,nghinhiem,nuocbenh,bieuhien)\n"
@@ -213,6 +231,11 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             } else {
                 bieuhien = "không";
             }
+            QRNoiDia ="Mã người dùng: "+nguoidung_id+" /Phương tiện:"+phuongtien+"\n"
+                    + " /Mã hiệu phương tiện:"+mahieuphuongtien+" /Nơi đi:"+noidi+"\n"
+                    + " /Nơi đến:"+noiden+" /Ngày khởi hành"+ngaykhoihanh+"/Di chuyển:"+dichuyen+"\n"
+                    + " /Triệu chứng:"+trieuchung+" /Nghi nhiễm: "+nghinhiem+"\n"
+                    + " /Nước bệnh: "+nuocbenh+" /Biểu hiện: "+bieuhien+"";
             listNoiDia.add(new NoiDia(nguoidung_id, phuongtien, mahieuphuongtien, noidi, noiden, ngaykhoihanh, dichuyen, trieuchung, nghinhiem, nuocbenh, bieuhien));
 //            System.out.println("them vao list thanh cong");
             // them vao database
@@ -264,6 +287,12 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         } else {
             dauhong = "không";
         }
+        QRNhapCanh ="Mã người dùng: "+nguoidung_id+" /Cửa khẩu:"+cuakhau+"\n"
+                    + " /Thông tin đi lại:"+thongtindilai+" /Ngày khởi hành:"+ngaykhoihanh+"\n"
+                    + " /Ngày nhập cảnh:"+ngaynhapcanh+" /Địa chỉ khởi hành"+diachikhoihanh+"\n"
+                    + "/Địa chỉ đến:"+diachiden+"\n"
+                    + " /Nơi ở sau cách ly:"+noiosaucachly+" /Sốt: "+sot+"\n"
+                    + " /Ho: "+ho+" /Khó thở: "+khotho+" /Đau họng:"+dauhong+"";
         listNhapCanh.add(new NhapCanh(nguoidung_id, cuakhau, thongtindilai, ngaykhoihanh, ngaynhapcanh, diachikhoihanh, diachiden, noiosaucachly, sot, ho, khotho, dauhong));
         //them vao data base
         try {
@@ -281,7 +310,33 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Thêm tờ khai không thành công");
         }
     }
-
+    public void XuatQRCode(String QR){
+        try {
+            String QrCodeData = QR; 
+            String filepath = "C:\\Users\\ASUS\\Documents\\cnpm\\QR.png";
+            String charset = "utf8";
+            
+            Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            
+            BitMatrix matrix = new MultiFormatWriter().encode(
+            new String(QrCodeData.getBytes(),charset),
+                        BarcodeFormat.QR_CODE,400,400,hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filepath.substring(filepath.lastIndexOf(".")+1), new File(filepath));
+            System.out.println("qr da xong");
+            
+            JFrame frame = new JFrame();
+            ImageIcon icon = new ImageIcon("C:\\Users\\ASUS\\Documents\\cnpm\\QR.png");
+            JLabel label = new JLabel(icon);
+            frame.add(label);
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(this);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -502,6 +557,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         rdoKhongTrieuChungToanDan.setText("Không");
 
         btnGuiToanDan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnGuiToanDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Upload.png"))); // NOI18N
         btnGuiToanDan.setText("Gửi");
         btnGuiToanDan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -604,6 +660,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         rdoKhongDiChuyenNoiDia.setText("Không");
 
         btnGuiNoiDia.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnGuiNoiDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Upload.png"))); // NOI18N
         btnGuiNoiDia.setText("Gửi");
         btnGuiNoiDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -884,6 +941,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         rdoKhongDauHong.setText("Không");
 
         btnGuiNhapCanh.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnGuiNhapCanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Upload.png"))); // NOI18N
         btnGuiNhapCanh.setText("Gửi");
         btnGuiNhapCanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1072,11 +1130,13 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
     private void btnGuiToanDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiToanDanActionPerformed
         // TODO add your handling code here:
         themToanDan();
+        XuatQRCode(QRToanDan);
     }//GEN-LAST:event_btnGuiToanDanActionPerformed
 
     private void btnGuiNoiDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiNoiDiaActionPerformed
         // TODO add your handling code here:
         themNoiDia();
+        XuatQRCode(QRNoiDia);
     }//GEN-LAST:event_btnGuiNoiDiaActionPerformed
 
     private void rdoKhongNghiNhiemNoiDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoKhongNghiNhiemNoiDiaActionPerformed
@@ -1086,6 +1146,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
     private void btnGuiNhapCanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiNhapCanhActionPerformed
         // TODO add your handling code here:
         themNhapCanh();
+        XuatQRCode(QRNhapCanh);
     }//GEN-LAST:event_btnGuiNhapCanhActionPerformed
 
 

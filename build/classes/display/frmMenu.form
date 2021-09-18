@@ -26,7 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="dekMenuChinh" pref="1097" max="32767" attributes="0"/>
+              <Component id="dekMenuChinh" pref="1080" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,11 +48,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnTrangChu" max="32767" attributes="0"/>
-                      <Component id="btnQLNguoiDung" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnTrangChu" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnQLTTNguoiDung" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnQLToKhai" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnKhaiBao" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnDangXuat" alignment="0" max="32767" attributes="0"/>
@@ -74,7 +74,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnKhaiBao" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnQLNguoiDung" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnQLTTNguoiDung" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnQLToKhai" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -89,6 +89,12 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnTrangChu">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Home.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="TRANG CH&#x1ee6;"/>
           </Properties>
           <Events>
@@ -98,12 +104,18 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnQLNguoiDung">
+        <Component class="javax.swing.JButton" name="btnQLTTNguoiDung">
           <Properties>
-            <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; NG&#x1af;&#x1edc;I D&#xd9;NG"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Clipboard.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd;  NG&#x1af;&#x1edc;I D&#xd9;NG"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLNguoiDungActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQLTTNguoiDungActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -111,6 +123,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnQLToKhai">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Text.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; T&#x1edc; KHAI"/>
           </Properties>
           <Events>
@@ -122,6 +140,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnKhaiBao">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Heart.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="KHAI BAO Y T&#x1ebe;"/>
           </Properties>
           <Events>
@@ -133,6 +157,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDangXuat">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/Log out.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
           </Properties>
           <Events>

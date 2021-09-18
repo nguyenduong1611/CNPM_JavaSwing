@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import process.NguoiDung;
 
+
+
 /**
  *
  * @author ASUS
@@ -19,20 +21,18 @@ public class DAONguoiDung {
     public static List<NguoiDung> getallTT(String query) throws SQLException, ClassNotFoundException{
         List<NguoiDung> lstNguoiDung = new ArrayList<>();
         ResultSet rs = extensions.Ket_Noi.ket_noi("KhaiBaoYTe").createStatement().executeQuery(query);
-        // xu ly ket qua tra ve
+        
         while(rs.next()){
             NguoiDung nd = new NguoiDung();
-            
-                nd.getId(rs.getInt(1));
-                nd.getSdt(rs.getString(2));
-                nd.getPassword(rs.getString(3));
-                nd.getRole(rs.getString(4));
-            
+                nd.setId(rs.getString(1));
+                nd.setSdt(rs.getString(2));
+                nd.setPassword(rs.getString(3));
+                nd.setRole(rs.getString(4));
             lstNguoiDung.add(nd);
         }
         return lstNguoiDung;
     }
-    public static List<NguoiDung> ListND() throws SQLException, ClassNotFoundException{
+    public static List<NguoiDung> listND() throws SQLException, ClassNotFoundException{
         String sql = "select * from NguoiDung";
         return getallTT(sql);
     }

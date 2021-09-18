@@ -138,6 +138,7 @@ public class frmLogin extends javax.swing.JFrame {
         });
 
         btnThoat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Exit button.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +147,7 @@ public class frmLogin extends javax.swing.JFrame {
         });
 
         btnDangKy.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnDangKy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png"))); // NOI18N
         btnDangKy.setText("Đăng ký");
         btnDangKy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,7 +236,7 @@ public class frmLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Đăng nhập với tư cách người dùng thành công");
                     menu.setVisible(true);
                     menu.btnKhaiBao.setVisible(true);
-                    menu.btnQLNguoiDung.setVisible(false);
+                    menu.btnQLTTNguoiDung.setVisible(false);
                     menu.btnQLToKhai.setVisible(false);
                     menu.btnTrangChu.setVisible(true);
                 } else {

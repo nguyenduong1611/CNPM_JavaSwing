@@ -17,11 +17,11 @@ import javax.swing.Timer;
  * @author ASUS
  */
 public class frmMenu extends javax.swing.JFrame {
-    test TEST = new test();
     frmTrangChu TRANGCHU = new frmTrangChu();
-    frmNguoiDung NGUOIDUNG = new frmNguoiDung();
+    frmTTNguoiDung TTNGUOIDUNG = new frmTTNguoiDung();
     frmKhaiBao KHAIBAO = new frmKhaiBao();
     frmQLToKhai TOKHAI = new frmQLToKhai();
+//    frmNguoiDung NGUOIDUNG = new frmNguoiDung();
     /**
      * Creates new form frmMenu
      */
@@ -53,7 +53,7 @@ public class frmMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnTrangChu = new javax.swing.JButton();
-        btnQLNguoiDung = new javax.swing.JButton();
+        btnQLTTNguoiDung = new javax.swing.JButton();
         btnQLToKhai = new javax.swing.JButton();
         btnKhaiBao = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
@@ -66,6 +66,8 @@ public class frmMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnTrangChu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Home.png"))); // NOI18N
         btnTrangChu.setText("TRANG CHỦ");
         btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,13 +75,17 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnQLNguoiDung.setText("QUẢN LÝ NGƯỜI DÙNG");
-        btnQLNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+        btnQLTTNguoiDung.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnQLTTNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Clipboard.png"))); // NOI18N
+        btnQLTTNguoiDung.setText("QUẢN LÝ  NGƯỜI DÙNG");
+        btnQLTTNguoiDung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQLNguoiDungActionPerformed(evt);
+                btnQLTTNguoiDungActionPerformed(evt);
             }
         });
 
+        btnQLToKhai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnQLToKhai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Text.png"))); // NOI18N
         btnQLToKhai.setText("QUẢN LÝ TỜ KHAI");
         btnQLToKhai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +93,8 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
+        btnKhaiBao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnKhaiBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Heart.png"))); // NOI18N
         btnKhaiBao.setText("KHAI BAO Y TẾ");
         btnKhaiBao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +102,8 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
+        btnDangXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Log out.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,15 +119,15 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnQLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnQLToKhai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnKhaiBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTrangChu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLTTNguoiDung, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLToKhai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKhaiBao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDangXuat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lbTime)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -131,7 +141,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKhaiBao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnQLNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnQLTTNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQLToKhai, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -169,7 +179,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dekMenuChinh, javax.swing.GroupLayout.DEFAULT_SIZE, 1097, Short.MAX_VALUE))
+                .addComponent(dekMenuChinh, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,12 +211,12 @@ public class frmMenu extends javax.swing.JFrame {
         dekMenuChinh.add(KHAIBAO);
     }//GEN-LAST:event_btnKhaiBaoActionPerformed
 
-    private void btnQLNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLNguoiDungActionPerformed
+    private void btnQLTTNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLTTNguoiDungActionPerformed
         // TODO add your handling code here:
         dekMenuChinh.removeAll();
-        NGUOIDUNG.setVisible(true);
-        dekMenuChinh.add(NGUOIDUNG);
-    }//GEN-LAST:event_btnQLNguoiDungActionPerformed
+        TTNGUOIDUNG.setVisible(true);
+        dekMenuChinh.add(TTNGUOIDUNG);
+    }//GEN-LAST:event_btnQLTTNguoiDungActionPerformed
 
     private void btnQLToKhaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLToKhaiActionPerformed
         // TODO add your handling code here:
@@ -253,7 +263,7 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
     public javax.swing.JButton btnKhaiBao;
-    public javax.swing.JButton btnQLNguoiDung;
+    public javax.swing.JButton btnQLTTNguoiDung;
     public javax.swing.JButton btnQLToKhai;
     public javax.swing.JButton btnTrangChu;
     private javax.swing.JDesktopPane dekMenuChinh;
