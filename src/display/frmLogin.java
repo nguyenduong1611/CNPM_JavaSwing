@@ -120,12 +120,8 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2.setText("Số điện thoại:");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        txtTK.setText("0974806341");
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mật Khẩu");
-
-        txtMK.setText("a123");
 
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnDangNhap.setForeground(new java.awt.Color(51, 51, 255));

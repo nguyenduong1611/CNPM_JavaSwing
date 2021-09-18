@@ -178,9 +178,12 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
             } else {
                 bieuhien = "không";
             }
-            QRToanDan ="Mã người dùng: "+nguoidung_id+" /Di chuyển:"+dichuyen+"\n"
-                    + " /Triệu chứng:"+trieuchung+" /Nghi nhiễm: "+nghinhiem+"\n"
-                    + " /Nước bệnh: "+nuocbenh+" /Biểu hiện: "+bieuhien+"";
+            QRToanDan ="ID_User: "+nguoidung_id+"\n"
+                    + " Di chuyen:"+dichuyen+"\n"
+                    + " Trieu chung:"+trieuchung+"\n"
+                    + " Nghi nhiem: "+nghinhiem+"\n"
+                    + " Nuoc benh: "+nuocbenh+"\n"
+                    + " Bieu hien: "+bieuhien+"";
             list.add(new ToanDan(nguoidung_id, dichuyen, trieuchung, nghinhiem, nuocbenh, bieuhien));
             //them vao database
             String sql = "insert into KhaiBaoToanDan(nguoidung_id,dichuyen,trieuchung,nghinhiem,nuocbenh,bieuhien)\n"
@@ -314,7 +317,7 @@ public class frmKhaiBao extends javax.swing.JInternalFrame {
         try {
             String QrCodeData = QR; 
             String filepath = "C:\\Users\\ASUS\\Documents\\cnpm\\QR.png";
-            String charset = "utf8";
+            String charset = "UTF-8";
             
             Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
