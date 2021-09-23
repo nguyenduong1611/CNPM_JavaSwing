@@ -6,6 +6,10 @@
 package display;
 
 import extensions.Ket_Noi;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,8 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//import javafx.scene.control.Cell;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import process.NhapCanh;
 import process.NoiDia;
 import process.ToanDan;
@@ -237,6 +249,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         btnLamMoiToanDan = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnTimKiemToanDan = new javax.swing.JButton();
+        btnInToanDan = new javax.swing.JButton();
         jpnNoiDia = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQLNoiDia = new javax.swing.JTable();
@@ -291,6 +304,13 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
             }
         });
 
+        btnInToanDan.setText("In");
+        btnInToanDan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInToanDanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpnToanDanLayout = new javax.swing.GroupLayout(jpnToanDan);
         jpnToanDan.setLayout(jpnToanDanLayout);
         jpnToanDanLayout.setHorizontalGroup(
@@ -307,8 +327,10 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                                 .addGap(69, 69, 69)
                                 .addComponent(btnTimKiemToanDan)
                                 .addGap(66, 66, 66)
-                                .addComponent(btnLamMoiToanDan)))
-                        .addGap(0, 437, Short.MAX_VALUE)))
+                                .addComponent(btnLamMoiToanDan)
+                                .addGap(54, 54, 54)
+                                .addComponent(btnInToanDan)))
+                        .addGap(0, 340, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -323,7 +345,8 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                 .addGroup(jpnToanDanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiemToanDan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLamMoiToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTimKiemToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnTimKiemToanDan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInToanDan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jscrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -401,7 +424,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                         .addComponent(btnTimKiemNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLamMoiNoiDia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("QL Tờ khai di chuyển nội địa", jpnNoiDia);
@@ -476,7 +499,7 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
                         .addComponent(btnLamMoiNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtTimKiemNhapCanh, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("QL Tờ khai nhập cảnh", jpnNhapCanh);
@@ -537,8 +560,51 @@ public class frmQLToKhai extends javax.swing.JInternalFrame {
         loadFormNhapCanh();
     }//GEN-LAST:event_btnLamMoiNhapCanhActionPerformed
 
+    private void btnInToanDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInToanDanActionPerformed
+        // TODO add your handling code here:
+        try {
+            JFileChooser jFileChooser = new JFileChooser();
+            jFileChooser.showSaveDialog(this);
+            File saveFile = jFileChooser.getSelectedFile();
+            
+            if(saveFile!= null){
+                saveFile = new File(saveFile.toString()+".xlsx");
+                Workbook wb = new XSSFWorkbook();
+                Sheet sheet = wb.createSheet("customer");
+                
+                Row rowCol = sheet.createRow(0);
+                for(int i=0;i<tblQLToanDan.getColumnCount();i++){
+                    Cell cell = rowCol.createCell(i);
+                    cell.setCellValue(tblQLToanDan.getColumnName(i));
+                }
+                for (int j=0;j<tblQLToanDan.getRowCount();j++){
+                    Row row = sheet.createRow(j);
+                    for (int k=0;k<tblQLToanDan.getColumnCount();k++){
+                        Cell cell = row.createCell(k);
+                        if(tblQLToanDan.getValueAt(j, k)!=null){
+                            cell.setCellValue(tblQLToanDan.getValueAt(j, k).toString());
+                        }
+                    }
+                }
+                FileOutputStream out = new FileOutputStream(new File(saveFile.toString()));
+                wb.write(out);
+                wb.close();
+                out.close();
+//                openfile(saveFile.toString());
+            }else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        }catch (IOException io){
+            System.out.println(io);
+        }
+
+    }//GEN-LAST:event_btnInToanDanActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInToanDan;
     private javax.swing.JButton btnLamMoiNhapCanh;
     private javax.swing.JButton btnLamMoiNoiDia;
     private javax.swing.JButton btnLamMoiToanDan;
